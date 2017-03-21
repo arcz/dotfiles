@@ -12,4 +12,6 @@ cd
 ln -s .vim my_dir/dotfiles/.vim
 ln -s .vimrc my_dir/dotfiles/.vimrc
 ln -s .bashrc my_dir/dotfiles/.bashrc
+ls -s .tmux.conf my_dir/dotfiles/.tmux.conf
+vim +PluginInstall +qall
 ```
