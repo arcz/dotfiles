@@ -4,8 +4,8 @@ let mapleader = " "
 let g:ruby_path='/usr/bin/ruby'
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set rtp+=~/.nvim/bundle/Vundle.vim
+call vundle#begin('~/.nvim/bundle')
 
 Plugin 'gmarik/Vundle.vim'
 
@@ -20,17 +20,20 @@ Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-repeat'
 
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'thoughtbot/vim-rspec'
 Plugin 'elixir-lang/vim-elixir'
-Plugin 'guns/vim-clojure-static'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'lambdatoast/elm.vim'
+Plugin 'idris-hackers/idris-vim'
+Plugin 'rust-lang/rust.vim'
+Plugin 'purescript-contrib/purescript-vim'
+Plugin 'neovimhaskell/haskell-vim'
+Plugin 'LnL7/vim-nix'
+Plugin 'tomlion/vim-solidity'
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'rking/ag.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'idris-hackers/idris-vim'
 nnoremap <leader>a :Ag -i<space>
 
 call vundle#end()            " required
@@ -87,6 +90,5 @@ noremap <Leader>s :update<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" RSpec.vim mappings
-map <Leader>c :call RunCurrentSpecFile()<CR>
-map <Leader>r :call RunAllSpecs()<CR>
+" exclude .gitignored files
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
