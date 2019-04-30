@@ -109,6 +109,8 @@
             set nocompatible              " be iMproved, required
             filetype off                  " required
             let mapleader = " "
+            set shell=/bin/sh
+            setlocal wrap
 
             nnoremap <leader>a :GrepperRg<space>
 
@@ -167,6 +169,35 @@
 
             " exclude .gitignored files
             let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+            let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
+            let g:LanguageClient_loggingLevel = 'INFO'
+            let g:LanguageClient_serverStderr = '/tmp/LanguageServer.log'
+            let g:LanguageClient_rootMarkers = {
+              \ 'haskell': ['*.cabal'],
+              \ 'purescript': ['psc-package.json']
+            \ }
+            let g:LanguageClient_serverCommands = {
+              \ 'haskell': ['hie-wrapper', '--lsp', '-r', getcwd()],
+              \ 'purescript': ['purescript-language-server', '--stdio']
+            \ }
+
+
+            set statusline+=%#warningmsg#
+            set statusline+=%{SyntasticStatuslineFlag()}
+            set statusline+=%*
+
+            let g:psc_ide_syntastic_mode = 0
+            let g:syntastic_always_populate_loc_list = 1
+            let g:syntastic_auto_loc_list = 1
+            let g:syntastic_check_on_open = 0
+            let g:syntastic_check_on_wq = 0
+            "let g:psc_ide_server_runner=["yarn", "--silent", "purs"]
+
+            autocmd filetype purescript setlocal omnifunc=LanguageClient#complete
+
+            " Use deoplete.
+            let g:deoplete#enable_at_startup = 1
             '';
 
         packages.myVimPackage = with pkgs.vimPlugins; {
@@ -183,14 +214,22 @@
             repeat
             ctrlp
             nerdtree
+            #fzf-vim
             #my_plugins.vim-ripgrep
+            deoplete-nvim
+            vim-signify
 
+            #LanguageClient-neovim
+            LanguageClient-neovim
+            syntastic
             bundler
             haskell-vim
-            purescript-vim
             vim-elixir
             rust-vim
             vim-nix
+
+            psc-ide-vim
+            purescript-vim
           ];
 
         };
@@ -210,6 +249,8 @@
           pgcli
           ripgrep
           tig
+
+          #fzf
         ];
       };
 
