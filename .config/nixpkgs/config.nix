@@ -250,6 +250,11 @@
           ripgrep
           tig
 
+          htop
+          tree
+          netcat
+          socat
+
           #fzf
         ];
       };
