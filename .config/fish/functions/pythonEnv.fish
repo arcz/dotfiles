@@ -3,6 +3,8 @@ function pythonEnv --description 'start a nix-shell with the given python packag
     set argv $argv[2..-1]
   end
 
+  set ppkgs $ppkgs "python"$pythonVersion"Packages.ipython"
+
   for el in $argv
     set ppkgs $ppkgs "python"$pythonVersion"Packages.$el"
   end
