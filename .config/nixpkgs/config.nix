@@ -8,45 +8,15 @@
 
     arturTmux = import ./tmux { inherit (pkgs) tmux writeText symlinkJoin makeWrapper; };
 
-    arturVim = vim_configurable.customize {
-      name = "vim";
-
-      vimrcConfig.customRC = my_vimrc;
-
-      vimrcConfig.packages.myVimPackage = with pkgs.vimPlugins; {
-        # loaded on launch
-        start = [
-          vim-grepper
-          vim-colorschemes
-          airline
-          fugitive
-          sensible
-          #vim-endwise
-          vim-dispatch
-          surround
-          repeat
-          ctrlp
-          nerdtree
-          #fzf-vim
-          #my_plugins.vim-ripgrep
-          deoplete-nvim
-          vim-signify
-
-          #LanguageClient-neovim
-          LanguageClient-neovim
-          syntastic
-          bundler
-          haskell-vim
-          vim-elixir
-          rust-vim
-          vim-nix
-
-          psc-ide-vim
-          purescript-vim
-        ];
-
+    neovim-unwrapped = pkgs.neovim-unwrapped.overrideAttrs (attrs: {
+      version = "v0.5.0-567-g4496628c1";
+      src = fetchFromGitHub {
+       owner = "neovim";
+       repo = "neovim";
+       rev = "4496628c181e456d57e9257e14d8582d8dc548eb";
+       sha256 = "0088ic9y1m86yskw877rfcldibbbcxhi9ygzfvsdiwvydbdymwgf";
       };
-    };
+    });
 
     arturNeovim = neovim.override {
       configure = {
@@ -55,12 +25,13 @@
         packages.myVimPackage = with pkgs.vimPlugins; {
           # loaded on launch
           start = [
+            nvim-lsp
             vim-grepper
             vim-colorschemes
             airline
             fugitive
+            rhubarb # :Gbrowse
             sensible
-            #vim-endwise
             vim-dispatch
             surround
             repeat
@@ -68,20 +39,17 @@
             nerdtree
             nerdtree-git-plugin
             fzf-vim
-            #my_plugins.vim-ripgrep
-            deoplete-nvim
             vim-signify
 
-            LanguageClient-neovim
             syntastic
             bundler
             haskell-vim
             vim-elixir
             rust-vim
             vim-nix
-
-            psc-ide-vim
-            purescript-vim
+            swift-vim
+            NeoSolarized
+            kotlin-vim
           ];
 
         };
@@ -91,9 +59,9 @@
     arturDev = pkgs.buildEnv {
       name = "artur-dev";
       paths = [
-        arturVim
         arturNeovim
         arturTmux
+        #arturFish
 
         fish
         git
