@@ -4,16 +4,17 @@ let
     sha256 = "1yp5r5pbpagwkxy65w0m0znmmijsf62asxgg7048v2nzd2zrislk";
   }) {};
 in
+
 { pkgs ? nixpkgs }:
 
 rec {
   neovim-5-dev = pkgs.neovim-unwrapped.overrideAttrs (attrs: {
-    version = "v0.5.0-567-g4496628c1";
+    version = "v0.5.0-627-g94b7ff730";
     src = pkgs.fetchFromGitHub {
      owner = "neovim";
      repo = "neovim";
-     rev = "4496628c181e456d57e9257e14d8582d8dc548eb";
-     sha256 = "0088ic9y1m86yskw877rfcldibbbcxhi9ygzfvsdiwvydbdymwgf";
+     rev = "94b7ff730a1914c14f347f5dc75175dc34a4b3f5";
+     sha256 = "15fpihn2xbdzp4nb1sgni0wyr94q89y45jaxfmzh6vjbx8f76m0w";
     };
   });
 
@@ -25,7 +26,7 @@ rec {
         # loaded on launch
         start = [
           nvim-lsp
-          vim-grepper
+          #vim-grepper
           vim-colorschemes
           airline
           fugitive
@@ -35,8 +36,9 @@ rec {
           surround
           repeat
           ctrlp
-          nerdtree
-          nerdtree-git-plugin
+          #nerdtree
+          #nerdtree-git-plugin
+          vim-vinegar
           fzf-vim
           vim-signify
 

@@ -1,8 +1,11 @@
 let
   languageclient = ''
     lua vim.cmd('packadd nvim-lsp')
-    lua require'nvim_lsp'.rls.setup{}
+    "lua require'nvim_lsp'.rls.setup{}
+    lua require'nvim_lsp'.rust_analyzer.setup{}
     lua require'nvim_lsp'.ccls.setup{}
+    lua require'nvim_lsp'.tsserver.setup{}
+    lua require'nvim_lsp'.gopls.setup{}
 
     inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -27,7 +30,7 @@ in
   setlocal wrap
   set colorcolumn=80,100
 
-  nnoremap <leader>a :GrepperRg<space>
+  nnoremap <leader>a :Rg<space>
 
   filetype plugin indent on    " required
 
@@ -74,6 +77,7 @@ in
   autocmd BufWritePre * :%s/\s\+$//e
 
   nmap <leader>n :NERDTree<cr>
+  let NERDTreeShowHidden=1
 
   imap jj <Esc>
   map <leader>h <C-w>h
