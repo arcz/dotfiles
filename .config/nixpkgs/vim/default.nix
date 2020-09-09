@@ -25,7 +25,7 @@ rec {
       packages.myVimPackage = with pkgs.vimPlugins; {
         # loaded on launch
         start = [
-          nvim-lsp
+          nvim-lspconfig
           #vim-grepper
           vim-colorschemes
           airline

@@ -1,6 +1,6 @@
 let
   languageclient = ''
-    lua vim.cmd('packadd nvim-lsp')
+    lua vim.cmd('packadd nvim-lspconfig')
     "lua require'nvim_lsp'.rls.setup{}
     lua require'nvim_lsp'.rust_analyzer.setup{}
     lua require'nvim_lsp'.ccls.setup{}
