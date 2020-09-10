@@ -1,0 +1,14 @@
+diff --git a/src/fish.cpp b/src/fish.cpp
+index 674c20471..2867a3677 100644
+--- a/src/fish.cpp
++++ b/src/fish.cpp
+@@ -237,6 +237,9 @@ static void source_config_in_directory(const wcstring &dir) {
+ static int read_init(const struct config_paths_t &paths) {
+     source_config_in_directory(paths.data);
+     source_config_in_directory(paths.sysconf);
++    auto extra_config = std::getenv("FISH_CUSTOM_CONFIG_DIR");
++    if (extra_config != nullptr)
++      source_config_in_directory(str2wcstring(extra_config));
+ 
+     // We need to get the configuration directory before we can source the user configuration file.
+     // If path_get_config returns false then we have no configuration directory and no custom config
