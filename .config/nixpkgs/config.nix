@@ -11,20 +11,20 @@
       patches = attrs.patches ++ [./fish/custom_config.patch];
     });
 
-    arturFish = import ./fish { inherit fish; inherit (pkgs) writeText symlinkJoin makeWrapper; };
+    fish-artur = import ./fish { inherit fish; inherit (pkgs) writeText symlinkJoin makeWrapper; };
 
-    arturTmux = import ./tmux { inherit (pkgs) tmux writeText symlinkJoin makeWrapper; };
+    tmux-artur = import ./tmux { inherit (pkgs) tmux writeText symlinkJoin makeWrapper; };
 
     neovim-unwrapped = vim.neovim-5-dev;
 
-    arturNeovim = vim.arturNeovim;
+    neovim-artur = vim.neovim-artur;
 
-    arturDev = pkgs.buildEnv {
-      name = "artur-dev";
+    devenv-artur = pkgs.buildEnv {
+      name = "devenv-artur";
       paths = [
-        arturNeovim
-        arturTmux
-        arturFish
+        neovim-artur
+        tmux-artur
+        fish-artur
         python3
 
         # Fish and nix-env compatibility
@@ -38,6 +38,7 @@
         pgcli
         ripgrep
         tig
+        bat
 
         htop
         tree

@@ -18,7 +18,7 @@ rec {
     };
   });
 
-  arturNeovim = (pkgs.wrapNeovim neovim-5-dev {}).override {
+  neovim-artur = (pkgs.wrapNeovim neovim-5-dev {}).override {
     configure = {
       customRC = import ./vimrc.nix;
 
