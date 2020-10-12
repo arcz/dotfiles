@@ -1,11 +1,4 @@
-let
-  nixpkgs = import (builtins.fetchTarball {
-    url = https://github.com/NixOS/nixpkgs/archive/926afba09cef87d201659f7433effb15a3382a94.tar.gz;
-    sha256 = "1yp5r5pbpagwkxy65w0m0znmmijsf62asxgg7048v2nzd2zrislk";
-  }) {};
-in
-
-{ pkgs ? nixpkgs }:
+{ pkgs }:
 
 rec {
   neovim-5-dev = pkgs.neovim-unwrapped.overrideAttrs (attrs: {
