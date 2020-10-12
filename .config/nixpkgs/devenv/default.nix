@@ -27,5 +27,7 @@ pkgs.buildEnv {
     socat
 
     fzf
+
+    ncdu
   ];
 }
