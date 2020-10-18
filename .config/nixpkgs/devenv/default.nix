@@ -29,5 +29,6 @@ pkgs.buildEnv {
     fzf
 
     ncdu
+    file
   ];
 }
