@@ -25,10 +25,10 @@ pkgs.buildEnv {
     tree
     netcat
     socat
-
-    fzf
-
     ncdu
+    curl
+    wget
     file
+    fzf
   ];
 }
