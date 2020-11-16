@@ -1,0 +1,19 @@
+diff --git a/plugin/neuron.vim b/plugin/neuron.vim
+index 9b11daa..fd40546 100644
+--- a/plugin/neuron.vim
++++ b/plugin/neuron.vim
+@@ -66,14 +66,4 @@ if !exists("g:neuron_no_mappings") || ! g:neuron_no_mappings
+ 	ino <expr> <c-x><c-y> neuron#insert_zettel_complete(1)
+ end
+ 
+-" refresh the cache now if we are in a zettelkasten dir
+-if filereadable(g:neuron_dir."neuron.dhall")
+-	let current_file = expand("%:p")
+-	if empty(current_file)
+-		call neuron#refresh_cache(0)
+-	else
+-		call neuron#refresh_cache(1)
+-	endif
+-endif
+-
+ " : vim: set fdm=marker :

@@ -1,5 +1,7 @@
 { pkgs }:
 
+let plugins = pkgs.callPackage (import ./plugins.nix) {};
+in
 rec {
   neovim-5-dev = pkgs.neovim-unwrapped.overrideAttrs (attrs: {
     version = "v0.5.0-627-g94b7ff730";
@@ -43,6 +45,7 @@ rec {
           swift-vim
           NeoSolarized
           kotlin-vim
+          plugins.neuron-vim
         ];
 
       };

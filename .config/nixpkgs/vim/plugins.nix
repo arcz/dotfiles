@@ -1,13 +1,13 @@
 { vimUtils, fetchFromGitHub }:
 {
-  vim-ripgrep = vimUtils.buildVimPluginFrom2Nix {
-    name = "vim-ripgrep-2018-09-09";
+  neuron-vim = vimUtils.buildVimPluginFrom2Nix {
+    name = "neuron-vim-1.0-dev";
+    patches = [./plugins/neuron.patch];
     src = fetchFromGitHub {
-      owner = "jremmen";
-      repo = "vim-ripgrep";
-      rev = "ec87af6b69387abb3c4449ce8c4040d2d00d745e";
-      sha256 = "1by56rflr0bmnjvcvaa9r228zyrmxwfkzkclxvdfscm7l7n7jnmh";
+      owner = "fiatjaf";
+      repo = "neuron.vim";
+      rev = "3015bbb2eb2ec1d64885faa31007c9e499af2598";
+      sha256 = "1w9c3b8j4dpz6qwsah9p9p5siqm357fq7jiksawwgzgdcjd2sjkj";
     };
-    dependencies = [];
   };
 }
