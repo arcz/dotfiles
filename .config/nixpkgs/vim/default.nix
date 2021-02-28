@@ -4,13 +4,14 @@ let plugins = pkgs.callPackage (import ./plugins.nix) {};
 in
 rec {
   neovim-5-dev = pkgs.neovim-unwrapped.overrideAttrs (attrs: {
-    version = "v0.5.0-627-g94b7ff730";
+    version = "v0.5.0-dev+1115-gc1fbc2ddf";
     src = pkgs.fetchFromGitHub {
      owner = "neovim";
      repo = "neovim";
-     rev = "94b7ff730a1914c14f347f5dc75175dc34a4b3f5";
-     sha256 = "15fpihn2xbdzp4nb1sgni0wyr94q89y45jaxfmzh6vjbx8f76m0w";
+     rev = "c1fbc2ddf15b2f44b615f90b2511349ab974cb83";
+     sha256 = "0kvk3r4by8r3asmfl69iw93xnd8lwfr0pynynlhr5y8h5pjd3rfi";
     };
+    buildInputs = attrs.buildInputs ++ [ pkgs.tree-sitter ];
   });
 
   neovim-artur = (pkgs.wrapNeovim neovim-5-dev {}).override {
@@ -45,7 +46,7 @@ rec {
           swift-vim
           NeoSolarized
           kotlin-vim
-          plugins.neuron-vim
+          neuron-vim
         ];
 
       };

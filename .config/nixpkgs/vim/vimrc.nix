@@ -2,10 +2,10 @@ let
   languageclient = ''
     lua vim.cmd('packadd nvim-lspconfig')
     "lua require'nvim_lsp'.rls.setup{}
-    lua require'nvim_lsp'.rust_analyzer.setup{}
-    lua require'nvim_lsp'.ccls.setup{}
-    lua require'nvim_lsp'.tsserver.setup{}
-    lua require'nvim_lsp'.gopls.setup{}
+    lua require'lspconfig'.rust_analyzer.setup{}
+    lua require'lspconfig'.ccls.setup{}
+    lua require'lspconfig'.tsserver.setup{}
+    lua require'lspconfig'.gopls.setup{}
 
     inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
