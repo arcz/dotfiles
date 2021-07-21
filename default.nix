@@ -5,7 +5,7 @@ let
 in rec {
   fish-customconfig = pkgs.fish.overrideAttrs (attrs: {
     # a hack to sneak in extra config with customizable path
-    patches = attrs.patches ++ [./.config/nixpkgs/fish/custom_config.patch];
+    #patches = [./.config/nixpkgs/fish/custom_config.patch];
   });
   neovim-5-dev = vim.neovim-5-dev;
   neovim-artur = vim.neovim-artur;

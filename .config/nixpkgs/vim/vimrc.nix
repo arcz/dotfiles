@@ -6,6 +6,7 @@ let
     lua require'lspconfig'.ccls.setup{}
     lua require'lspconfig'.tsserver.setup{}
     lua require'lspconfig'.gopls.setup{}
+    lua require'lspconfig'.hls.setup{}
 
     inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
