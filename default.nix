@@ -1,6 +1,9 @@
 let
-  # TODO lock to avoid breaking fish patching etc.
-  pkgs = import <nixpkgs> {};
+  pkgs = import (builtins.fetchTarball {
+    name = "nixos-unstable-2021-07-21";
+    url = "https://github.com/nixos/nixpkgs/archive/314f595ab1cd09a27ad66dd1283344fa5745e473.tar.gz";
+    sha256 = "sha256:11a8r0609yz3q3jslxwz1gff9n5sbzwhfx6cfbq1hhdlsxkcxjdv";
+  }) {};
   vim = import ./.config/nixpkgs/vim { inherit pkgs; };
 in rec {
   fish-customconfig = pkgs.fish.overrideAttrs (attrs: {
