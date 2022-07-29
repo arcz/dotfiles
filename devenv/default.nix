@@ -1,11 +1,11 @@
-{ neovim-artur, tmux-artur, pkgs }:
+{ pkgs }:
 with pkgs;
 pkgs.buildEnv {
   name = "devenv-artur";
   paths = [
-    neovim-artur
-    tmux-artur
-    pkgs.fish
+    (pkgs.callPackage (import ../nvim) { })
+    (pkgs.callPackage (import ../tmux) { })
+    fish
     python3
 
     # Fish and nix-env compatibility
@@ -17,7 +17,7 @@ pkgs.buildEnv {
     git
     jq
     #pgcli
-    #ripgrep
+    ripgrep
     tig
     bat
 

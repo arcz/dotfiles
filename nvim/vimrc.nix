@@ -1,7 +1,6 @@
 let
   languageclient = ''
     lua vim.cmd('packadd nvim-lspconfig')
-    "lua require'nvim_lsp'.rls.setup{}
     lua require'lspconfig'.rust_analyzer.setup{}
     lua require'lspconfig'.ccls.setup{}
     lua require'lspconfig'.tsserver.setup{}
@@ -24,10 +23,7 @@ let
 in
   ''
   set encoding=utf-8
-  "set nocompatible              " be iMproved, required
-  "filetype off                  " required
   let mapleader = " "
-  set shell=/bin/sh
   setlocal wrap
   set colorcolumn=80,100
 
@@ -37,8 +33,7 @@ in
 
   syntax enable
   "set background=dark
-  let g:solarized_termcolors=256
-  colorscheme gruvbox
+  colorscheme molokai
 
   syntax on
   "set number
@@ -77,9 +72,6 @@ in
   " Remove trailing whitespaces
   autocmd BufWritePre * :%s/\s\+$//e
 
-  nmap <leader>n :NERDTree<cr>
-  let NERDTreeShowHidden=1
-
   imap jj <Esc>
   map <leader>h <C-w>h
   map <leader>j <C-w>j
@@ -107,17 +99,10 @@ in
 
   autocmd filetype purescript setlocal omnifunc=LanguageClient#complete
 
-  " Use deoplete.
-  let g:deoplete#enable_at_startup = 1
-
-  " disable preview window
-  set completeopt-=preview
-
   " use omni completion provided by lsp
   set omnifunc=lsp#omnifunc
 
   set termguicolors
-  let g:neosolarized_contrast = "high"
 
   ${languageclient}
   ''
