@@ -10,6 +10,7 @@ pkgs.neovim.override {
         nvim-lspconfig
         vim-colorschemes
         airline
+        vim-airline-themes
         fugitive
         rhubarb # :Gbrowse
         sensible
