@@ -1,10 +1,10 @@
-{ pkgs }:
+{ neovim, vimPlugins }:
 
-pkgs.neovim.override {
+neovim.override {
   configure = {
     customRC = import ./vimrc.nix;
 
-    packages.myVimPackage = with pkgs.vimPlugins; {
+    packages.myVimPackage = with vimPlugins; {
       # loaded on launch
       start = [
         nvim-lspconfig

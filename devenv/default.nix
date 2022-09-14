@@ -1,10 +1,9 @@
-{ pkgs }:
-with pkgs;
-pkgs.buildEnv {
+{ buildEnv, callPackage }:
+buildEnv {
   name = "devenv-artur";
   paths = [
-    (pkgs.callPackage (import ../nvim) { })
-    (pkgs.callPackage (import ../tmux) { })
+    (callPackage (import ../nvim) { })
+    (callPackage (import ../tmux) { })
     fish
     python3
 
