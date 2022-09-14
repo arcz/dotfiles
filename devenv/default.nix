@@ -1,5 +1,5 @@
-{ buildEnv, callPackage }:
-buildEnv {
+{ pkgs }:
+with pkgs; pkgs.buildEnv{
   name = "devenv-artur";
   paths = [
     (callPackage (import ../nvim) { })
