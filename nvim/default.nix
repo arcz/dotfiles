@@ -2,36 +2,41 @@
 
 neovim.override {
   configure = {
-    customRC = import ./vimrc.nix;
+    customRC = ''
+      lua dofile('${./config.lua}')
+      source ${./vimrc.viml}
+    '';
 
     packages.myVimPackage = with vimPlugins; {
       # loaded on launch
       start = [
         nvim-lspconfig
-        vim-colorschemes
-        airline
-        vim-airline-themes
+        nvim-lsputils
+        lualine-nvim
+        lualine-lsp-progress
+        vim-devicons
+        telescope-nvim
+        lsp-status-nvim
+
         fugitive
         rhubarb # :Gbrowse
         sensible
-        vim-dispatch
         surround
         repeat
-        ctrlp
         vim-vinegar
         fzf-vim
         vim-signify
-        nvim-treesitter
 
-        syntastic
-        haskell-vim
+        haskell-vim # improves Haskell syntax highlighting
         vim-elixir
         rust-vim
         vim-nix
         swift-vim
-        NeoSolarized
         kotlin-vim
         vim-solidity
+
+        vim-colorschemes
+        gruvbox-community
       ];
     };
   };
