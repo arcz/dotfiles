@@ -19,6 +19,15 @@ local on_attach = function(client, bufnr)
       vim.diagnostic.open_float(nil, { focusable = false })
     end,
   })
+
+  --vim.api.nvim_command [[autocmd CursorHold,CursorHoldI,InsertLeave <buffer> lua vim.lsp.codelens.refresh()]]
+  vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI", "InsertLeave"}, {
+    pattern = "*",
+    callback = function()
+      vim.lsp.codelens.refresh()
+    end,
+  })
+  vim.keymap.set("n", "<leader>l", vim.lsp.codelens.run, bufopts)
 end
 
 require('lspconfig').rust_analyzer.setup({ on_attach = on_attach })

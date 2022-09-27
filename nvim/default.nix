@@ -37,6 +37,8 @@ neovim.override {
 
         vim-colorschemes
         gruvbox-community
+
+        indent-blankline-nvim
       ];
     };
   };
