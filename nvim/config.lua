@@ -36,6 +36,14 @@ require('lspconfig').gopls.setup({ on_attach = on_attach })
 require('lspconfig').hls.setup({ on_attach = on_attach })
 
 require('lualine').setup({
-  options = { icons_enabled = true },
-  sections = { lualine_c = { 'lsp_progress' } }
+  options = { icons_enabled = false },
+  sections = {
+    lualine_c = { {
+      'filename',
+      path = 1,
+      file_status = true,
+    },
+    { 'lsp_progress' }
+    },
+  }
 })
