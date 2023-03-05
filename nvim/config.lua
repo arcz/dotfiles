@@ -37,7 +37,11 @@ require('lspconfig').hls.setup({ on_attach = on_attach })
 require('lspconfig').ccls.setup({ on_attach = on_attach })
 
 require('lualine').setup({
-  options = { icons_enabled = false },
+  options = {
+    icons_enabled = false,
+    section_separators = '',
+    component_separators = '',
+  },
   sections = {
     lualine_c = { {
       'filename',

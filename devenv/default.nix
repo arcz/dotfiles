@@ -15,7 +15,7 @@ with pkgs; pkgs.buildEnv{
 
     git
     jq
-    #pgcli
+    pgcli
     ripgrep
     tig
     bat
@@ -24,7 +24,7 @@ with pkgs; pkgs.buildEnv{
     tree
     netcat
     socat
-    ncdu
+    #ncdu
     curl
     wget
     file
