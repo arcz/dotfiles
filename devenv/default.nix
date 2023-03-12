@@ -24,10 +24,11 @@ with pkgs; pkgs.buildEnv{
     tree
     netcat
     socat
-    #ncdu
+    ncdu_1 # ncdu/ncdu_2 is broken because zig is broken on macos
     curl
     wget
     file
     fzf
+    ccls
   ];
 }
