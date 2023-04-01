@@ -12,6 +12,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gds', require'telescope.builtin'.lsp_document_symbols, bufopts)
   vim.keymap.set('n', 'gws', require'telescope.builtin'.lsp_workspace_symbols, bufopts)
+  vim.keymap.set('n', 'cd', vim.diagnostic.goto_next, bufopts)
 
   vim.api.nvim_create_autocmd("CursorHold", {
     pattern = "*",
@@ -27,7 +28,7 @@ local on_attach = function(client, bufnr)
       vim.lsp.codelens.refresh()
     end,
   })
-  vim.keymap.set("n", "<leader>l", vim.lsp.codelens.run, bufopts)
+  vim.keymap.set("n", "cl", vim.lsp.codelens.run, bufopts)
 end
 
 require('lspconfig').rust_analyzer.setup({ on_attach = on_attach })
