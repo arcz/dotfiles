@@ -53,3 +53,5 @@ require('lualine').setup({
     },
   }
 })
+
+require("ibl").setup() -- https://github.com/lukas-reineke/indent-blankline.nvim

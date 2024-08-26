@@ -4,14 +4,11 @@ setlocal wrap
 set colorcolumn=80,100
 set mouse=a
 
-"nnoremap <leader>a :Rg <space>
-
 filetype plugin indent on    " required
 
 syntax on
 syntax enable
 set background=dark
-let g:gruvbox_material_background = 'hard'
 colorscheme gruvbox
 
 "set number
@@ -26,6 +23,7 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/backup
 set nobackup
 set hidden
+set conceallevel=3
 "set spell
 "set spelllang=en_us
 
