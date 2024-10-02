@@ -19,7 +19,7 @@ neovim.override {
         lsp-status-nvim
 
         fugitive
-        rhubarb # :Gbrowse
+        rhubarb # :GBrowse
         sensible
         surround
         repeat
@@ -39,6 +39,7 @@ neovim.override {
         gruvbox-community
 
         indent-blankline-nvim
+        markdown-preview-nvim
       ];
     };
   };
