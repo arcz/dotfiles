@@ -40,6 +40,7 @@ neovim.override {
 
         indent-blankline-nvim
         markdown-preview-nvim
+        nvim-ufo
       ];
     };
   };
