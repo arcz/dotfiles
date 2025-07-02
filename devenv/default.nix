@@ -26,5 +26,7 @@ with pkgs; pkgs.buildEnv {
     file
     fzf
     ccls
+
+    nil # Nix LSP
   ];
 }

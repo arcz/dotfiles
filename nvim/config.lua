@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end
 })
 
-require('lspconfig').rust_analyzer.setup({
+vim.lsp.config('rust_analyzer', {
   diagnostics = {
     enable = true,
     experimental = {
@@ -37,10 +37,11 @@ require('lspconfig').rust_analyzer.setup({
     },
   },
 })
-require('lspconfig').ts_ls.setup({ })
-require('lspconfig').gopls.setup({ })
-require('lspconfig').hls.setup({ })
-require('lspconfig').ccls.setup({ })
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('gopls')
+vim.lsp.enable('hls')
+vim.lsp.enable('ccls')
+vim.lsp.enable('nil_ls')
 
 require('lualine').setup({
   options = {
