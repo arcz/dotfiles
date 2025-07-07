@@ -1,4 +1,12 @@
-vim.cmd('packadd nvim-lspconfig')
+vim.g.mapleader = ' '
+
+local telescope = require('telescope')
+local telescope_builtin = require('telescope.builtin')
+
+vim.keymap.set('n', '<leader>ff', telescope_builtin.find_files)
+vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers)
+vim.keymap.set('n', '<leader>fx', telescope_builtin.grep_string)
+vim.keymap.set('n', '<leader>fg', telescope.extensions.live_grep_args.live_grep_args)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
@@ -6,11 +14,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local bufopts = { noremap=true, silent=true, buffer=event.buf }
 
     vim.keymap.set('n', 'gtd', vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set('n', 'gr', require'telescope.builtin'.lsp_references, bufopts)
-    vim.keymap.set('n', 'ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', 'gds', require'telescope.builtin'.lsp_document_symbols, bufopts)
-    vim.keymap.set('n', 'gws', require'telescope.builtin'.lsp_workspace_symbols, bufopts)
-    vim.keymap.set('n', 'cd', vim.diagnostic.goto_next, bufopts)
+    vim.keymap.set('n', 'gr',  telescope_builtin.lsp_references, bufopts)
+    vim.keymap.set('n', 'ca',  vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', 'gds', telescope_builtin.lsp_document_symbols, bufopts)
+    vim.keymap.set('n', 'gws', telescope_builtin.lsp_workspace_symbols, bufopts)
+    vim.keymap.set('n', 'cd',  vim.diagnostic.goto_next, bufopts)
 
     vim.api.nvim_create_autocmd("CursorHold", {
       pattern = "*",

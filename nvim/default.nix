@@ -16,6 +16,7 @@ neovim.override {
         lualine-lsp-progress
         vim-devicons
         telescope-nvim
+        telescope-live-grep-args-nvim
         lsp-status-nvim
 
         fugitive
