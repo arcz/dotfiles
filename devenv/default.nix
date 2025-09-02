@@ -9,7 +9,7 @@ with pkgs; pkgs.buildEnv {
 
     git
     jq
-    pgcli
+    # pgcli # broken
     ripgrep
     tig
     bat
