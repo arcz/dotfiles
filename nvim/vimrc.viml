@@ -46,7 +46,27 @@ autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType go setlocal ts=4 sw=4 noexpandtab
 
 " Remove trailing whitespaces
-autocmd BufWritePre * :%s/\s\+$//e
+let g:strip_whitespace = 1
+
+" Function to strip whitespace
+function! StripTrailingWhitespace()
+    if g:strip_whitespace
+        let l:save = winsaveview()
+        keeppatterns %s/\s\+$//e
+        call winrestview(l:save)
+    endif
+endfunction
+
+" Autocmd
+autocmd BufWritePre * call StripTrailingWhitespace()
+
+" Toggle function for convenience
+function! ToggleWhitespaceStripping()
+    let g:strip_whitespace = !g:strip_whitespace
+    echo "Whitespace stripping: " . (g:strip_whitespace ? "ON" : "OFF")
+endfunction
+
+command! ToggleWhitespaceStripping let g:strip_whitespace = !g:strip_whitespace
 
 imap jj <Esc>
 map <leader>h <C-w>h
