@@ -9,13 +9,15 @@ with pkgs; pkgs.buildEnv {
 
     git
     jq
-    # pgcli # broken
+    pgcli
     ripgrep
     tig
     bat
     watch
     rsync
+    hextazy
 
+    lsof
     htop
     tree
     netcat
