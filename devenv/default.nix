@@ -28,6 +28,7 @@ with pkgs; pkgs.buildEnv {
     file
     fzf
     ccls
+    pyright
 
     nil # Nix LSP
   ];

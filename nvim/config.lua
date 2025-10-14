@@ -50,6 +50,7 @@ vim.lsp.enable('gopls')
 vim.lsp.enable('hls')
 vim.lsp.enable('ccls')
 vim.lsp.enable('nil_ls')
+vim.lsp.enable('pyright')
 
 require('lualine').setup({
   options = {
