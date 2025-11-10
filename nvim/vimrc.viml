@@ -9,6 +9,7 @@ filetype plugin indent on    " required
 syntax on
 syntax enable
 set background=dark
+let g:gruvbox_contrast_light='hard'
 colorscheme gruvbox
 
 "set number
