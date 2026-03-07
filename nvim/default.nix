@@ -19,11 +19,11 @@ neovim.override {
         telescope-live-grep-args-nvim
         lsp-status-nvim
 
-        fugitive
-        rhubarb # :GBrowse
-        sensible
-        surround
-        repeat
+        vim-fugitive
+        vim-rhubarb # :GBrowse
+        vim-sensible
+        vim-surround
+        vim-repeat
         vim-vinegar
         fzf-vim
         vim-signify
