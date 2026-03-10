@@ -8,9 +8,24 @@ filetype plugin indent on    " required
 
 syntax on
 syntax enable
-set background=dark
 let g:gruvbox_contrast_light='hard'
-colorscheme gruvbox
+
+let g:switching_theme = 0
+function! OnBackgroundChange()
+  if g:switching_theme
+    return
+  endif
+  let g:switching_theme = 1
+  if &background == 'dark'
+    colorscheme gruvbox
+  else
+    colorscheme onedark
+    set background=light
+  endif
+  let g:switching_theme = 0
+endfunction
+
+autocmd OptionSet background ++nested call OnBackgroundChange()
 
 "set number
 set relativenumber

@@ -38,6 +38,7 @@ neovim.override {
 
         vim-colorschemes
         gruvbox-community
+        onedark-nvim
 
         indent-blankline-nvim
         markdown-preview-nvim
