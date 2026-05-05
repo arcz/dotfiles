@@ -11,7 +11,6 @@ neovim.override {
       # loaded on launch
       start = [
         nvim-lspconfig
-        nvim-lsputils
         lualine-nvim
         lualine-lsp-progress
         vim-devicons
@@ -36,7 +35,6 @@ neovim.override {
         kotlin-vim
         vim-solidity
 
-        vim-colorschemes
         gruvbox-community
         onedark-nvim
 
