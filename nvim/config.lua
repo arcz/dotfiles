@@ -18,30 +18,29 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'ca',  vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', 'gds', telescope_builtin.lsp_document_symbols, bufopts)
     vim.keymap.set('n', 'gws', telescope_builtin.lsp_workspace_symbols, bufopts)
-    vim.keymap.set('n', 'cd',  vim.diagnostic.goto_next, bufopts)
+    vim.keymap.set('n', 'cd',  function() vim.diagnostic.jump({ count = 1, float = true }) end, bufopts)
 
     vim.api.nvim_create_autocmd("CursorHold", {
-      pattern = "*",
+      buffer = event.buf,
       callback = function()
         vim.diagnostic.open_float(nil, { focusable = false })
       end,
     })
 
-    vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI", "InsertLeave"}, {
-      pattern = "*",
-      callback = function()
-        vim.lsp.codelens.refresh()
-      end,
-    })
+    vim.lsp.codelens.enable(true, { bufnr = event.buf })
     vim.keymap.set("n", "cl", vim.lsp.codelens.run, bufopts)
   end
 })
 
 vim.lsp.config('rust_analyzer', {
-  diagnostics = {
-    enable = true,
-    experimental = {
-      enable = true,
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = true,
+        experimental = {
+          enable = true,
+        },
+      },
     },
   },
 })
@@ -81,19 +80,17 @@ vim.o.foldenable = true
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 
--- Option 2: nvim lsp as LSP client
--- Tell the server the capability of foldingRange,
--- Neovim hasn't added foldingRange to default capabilities, users must add it manually
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true
-}
-local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
-for _, ls in ipairs(language_servers) do
-    require('lspconfig')[ls].setup({
-        capabilities = capabilities
-        -- you can add other fields for setting up lsp server in this table
-    })
-end
+-- Tell every server we support foldingRange (needed by ufo's lsp provider).
+-- Neovim doesn't advertise foldingRange in default capabilities, so add it for all
+-- configs via the `*` wildcard; merged on top of the built-in client capabilities.
+vim.lsp.config('*', {
+  capabilities = {
+    textDocument = {
+      foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      },
+    },
+  },
+})
 require('ufo').setup()
