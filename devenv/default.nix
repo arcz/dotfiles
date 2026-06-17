@@ -12,6 +12,7 @@ with pkgs; pkgs.buildEnv {
     pgcli
     ripgrep
     fd
+    ast-grep
     tig
     bat
     watch
