@@ -26,6 +26,11 @@ function! OnBackgroundChange()
 endfunction
 
 autocmd OptionSet background ++nested call OnBackgroundChange()
+" OptionSet only fires when 'background' actually changes, and never on
+" startup. Neovim auto-detects the terminal background asynchronously, so
+" without this the colorscheme is applied only when the detected value
+" differs from the default 'dark' — apply it explicitly at startup too.
+autocmd VimEnter * ++nested call OnBackgroundChange()
 
 "set number
 set relativenumber
