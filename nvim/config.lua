@@ -70,6 +70,15 @@ require('lualine').setup({
 
 require("ibl").setup() -- https://github.com/lukas-reineke/indent-blankline.nvim
 
+-- Lean 4 integration: LSP (via `lake serve`), infoview showing the goal state,
+-- and \-abbreviation expansion (e.g. \alpha -> α). Needs `elan`/`lake` on PATH.
+-- The generic LspAttach autocmd above wires up the usual LSP keymaps.
+-- lean.nvim defaults: LSP + abbreviations on; mappings=true adds <LocalLeader>
+-- helpers in Lean buffers (e.g. \i toggles the infoview). https://github.com/Julian/lean.nvim
+require('lean').setup({
+  mappings = true,
+})
+
 -- https://github.com/kevinhwang91/nvim-ufo?tab=readme-ov-file#minimal-configuration
 vim.o.foldcolumn = '1' -- '0' is not bad
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value

@@ -18,6 +18,9 @@ neovim.override {
         telescope-live-grep-args-nvim
         lsp-status-nvim
 
+        plenary-nvim # required by lean-nvim
+        lean-nvim
+
         vim-fugitive
         vim-rhubarb # :GBrowse
         vim-sensible
